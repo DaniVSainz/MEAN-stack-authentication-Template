@@ -1,4 +1,3 @@
-import { WorkoutService } from './../../../services/workout.service';
 import { ValidateService } from './../../../services/validate.service';
 import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
@@ -27,7 +26,7 @@ export class AuthDialogComponent implements OnInit{
     private authService: AuthService,
     private router: Router,
     private flashMessage: FlashMessagesService,
-    private workoutService: WorkoutService) {
+    ) {
   }
 
   ngOnInit(){
