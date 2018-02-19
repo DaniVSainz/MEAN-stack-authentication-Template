@@ -6,6 +6,8 @@ const config = require('../config/database');
 const User = require('../models/user');
 const Token = require('../models/verificationToken')
 var crypto = require('crypto');
+var nodemailer = require('nodemailer');
+
 // Register
 router.post('/register',  (req, res, next) => {
 
@@ -31,7 +33,13 @@ router.post('/register',  (req, res, next) => {
               if(err){
                 res.json({success: false, msg: `Encountered and Unknown error: ${err}`});
               }
-              res.json({success: true, msg: "You've successfully registered, please check your email to confirm your email address."});
+                          // Send the email
+            var transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: process.env.userEmail, pass: process.env.userPass } });
+            var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+            transporter.sendMail(mailOptions, function (err) {
+                if (err) { return res.status(500).send({ msg: err.message }); }
+                res.json({success: true, msg: "You've successfully registered, please check your email to confirm your email address."});
+            });
             })
           }
         })
