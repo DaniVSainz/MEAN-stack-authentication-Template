@@ -36,9 +36,6 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 const users = require('./routes/users');
-const workout = require('./routes/workout');
-const exercise = require('./routes/exercise');
-const set = require('./routes/set');
 
 // Port Number
 const port = process.env.PORT || 8080;
@@ -62,9 +59,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
-app.use('/api/workout', workout);
-app.use('/api/exercise', exercise);
-app.use('/api/set', set);
+
 
 
 
