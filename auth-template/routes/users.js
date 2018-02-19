@@ -33,7 +33,9 @@ router.post('/authenticate', (req, res, next) => {
     if(!user) {
       return res.json({success: false, msg: 'User not found'});
     }
-
+    if(user.isVerified == false){
+      return res.json({success: false, msg: 'Email is not Verified'})
+    }
     User.comparePassword(password, user.password, (err, isMatch) => {
       if(err) throw err;
       if(isMatch) {
