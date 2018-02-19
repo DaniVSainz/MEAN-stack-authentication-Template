@@ -1,6 +1,4 @@
-import { ExerciseShowComponent } from './workout/exercise-show/exercise-show.component';
-import { ShowWorkoutComponent } from './workout/show-workout/show-workout.component';
-import { WorkoutService } from './services/workout.service';
+
 import { DialogsModule } from './components/dialogs/dialogs.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -8,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 import { AppComponent } from './app.component';
@@ -20,11 +19,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
-import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
-import { WorkoutComponent } from './workout/workout.component';
-import { NewWorkoutComponent } from './workout/new-workout/new-workout.component';
 
+//Some components (mat-slide-toggle, mat-slider, matTooltip) rely on HammerJS for gestures.
+import 'hammerjs';
 
 
 
@@ -35,10 +33,6 @@ const appRoutes: Routes =  [
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-  {path:'workout', component: WorkoutComponent, canActivate:[AuthGuard]},
-  {path: 'new-workout', component: NewWorkoutComponent,canActivate: [AuthGuard]},
-  {path: 'show-workout/:id',component: ShowWorkoutComponent,canActivate: [AuthGuard]},
-  {path: 'show-exercise/:id',component: ExerciseShowComponent,canActivate: [AuthGuard]},
   { path: '**', component: HomeComponent }
 ]
 
@@ -51,10 +45,6 @@ const appRoutes: Routes =  [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    WorkoutComponent,
-    NewWorkoutComponent,
-    ShowWorkoutComponent,
-    ExerciseShowComponent
   ],
 
   imports: [
@@ -62,14 +52,12 @@ const appRoutes: Routes =  [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule.forRoot(),
     BrowserAnimationsModule,
     DialogsModule,
-
-
+    FlexLayoutModule
   ],
 
-  providers: [ValidateService, AuthService, AuthGuard,WorkoutService],
+  providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
