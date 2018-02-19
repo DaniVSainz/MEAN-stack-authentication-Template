@@ -4,7 +4,8 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
-
+const Token = require('../models/verificationToken')
+var crypto = require('crypto');
 // Register
 router.post('/register',  (req, res, next) => {
 
@@ -23,7 +24,15 @@ router.post('/register',  (req, res, next) => {
           if(err) {
             res.json({success: false, msg: 'Failed to register user'});
           } else {
-            res.json({success: true, msg: "You've successfully registered, please check your email to confirm your email address."});
+            // Create a verification token for this user
+            var token = new Token({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
+            // Save the verification token
+            token.save( err=>{
+              if(err){
+                res.json({success: false, msg: `Encountered and Unknown error: ${err}`});
+              }
+              res.json({success: true, msg: "You've successfully registered, please check your email to confirm your email address."});
+            })
           }
         })
       }
