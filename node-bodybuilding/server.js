@@ -40,6 +40,8 @@ const users = require('./routes/users');
 // Port Number
 const port = process.env.PORT || 8080;
 
+console.log(`Listening on port: ${port}`);
+
 app.use(logger('dev'));
 
 
