@@ -24,6 +24,8 @@ import { AuthGuard } from './guards/auth.guard';
 //Some components (mat-slide-toggle, mat-slider, matTooltip) rely on HammerJS for gestures.
 import 'hammerjs';
 
+//This will be either removed or kept depending on research.
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 
@@ -54,7 +56,8 @@ const appRoutes: Routes =  [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     DialogsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FlashMessagesModule.forRoot()
   ],
 
   providers: [ValidateService, AuthService, AuthGuard],
