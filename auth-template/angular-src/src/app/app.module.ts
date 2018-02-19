@@ -25,7 +25,8 @@ import 'hammerjs';
 
 //This will be either removed or kept depending on research.
 import { FlashMessagesModule } from 'angular2-flash-messages';
-
+//Flash message will be replaced for the module below.
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 
 const appRoutes: Routes =  [
@@ -56,7 +57,9 @@ const appRoutes: Routes =  [
     BrowserAnimationsModule,
     DialogsModule,
     FlexLayoutModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    //Will remove the above after full replacement.
+    SimpleNotificationsModule.forRoot()
   ],
 
   providers: [ValidateService, AuthService, AuthGuard],
