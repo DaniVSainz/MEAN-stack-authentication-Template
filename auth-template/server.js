@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 var logger = require('morgan');
 require('dotenv').config()
-var nodemailer = require('nodemailer');
 
 // Connect To Database (NEW) But not working!!!!!!!!!! (because of secret in db.js!!!!!)
 //const db = require('./config/database');
@@ -38,6 +37,7 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 const users = require('./routes/users');
+const confirmation = require('./routes/confirmation');
 
 // Port Number
 const port = process.env.PORT || 8080;
@@ -63,6 +63,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
+app.use('/confirmation', confirmation);
 
 
 
