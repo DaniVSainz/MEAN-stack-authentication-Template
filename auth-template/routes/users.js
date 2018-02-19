@@ -17,13 +17,13 @@ router.post('/register',  (req, res, next) => {
   
     User.findOne({email:newUser.email}).then(user=>{
       if(user){
-        res.json({success: false, msg: `You've already registered with this email.`});
+        res.json({success: false, msg: `An Account with email:  ${newUser.email} already exists`});
       }else{
         User.addUser(newUser, (err, user) => {
           if(err) {
             res.json({success: false, msg: 'Failed to register user'});
           } else {
-            res.json({success: true, msg: "You've successfully registered, please check your email to confirm your email adress."});
+            res.json({success: true, msg: "You've successfully registered, please check your email to confirm your email address."});
           }
         })
       }
