@@ -1,4 +1,3 @@
-
 import { DialogsModule } from './components/dialogs/dialogs.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
