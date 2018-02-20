@@ -7,6 +7,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     MatInputModule,
     FormsModule,
     FlashMessagesModule.forRoot(),
+    RouterModule
   ],
   declarations: [AuthDialogComponent],
   exports: [AuthDialogComponent],

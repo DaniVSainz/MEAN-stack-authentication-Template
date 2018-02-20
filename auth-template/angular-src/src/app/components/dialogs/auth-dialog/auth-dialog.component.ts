@@ -76,6 +76,10 @@ export class AuthDialogComponent implements OnInit{
     });
   }
 
+  closeDialog(){
+    this.dialogRef.close();
+  }
+
   onLoginSubmit() {
     const user = {
       username: this.username,
