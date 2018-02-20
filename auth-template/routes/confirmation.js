@@ -30,7 +30,7 @@ router.get('/resend/:email', (req,res,next) => {
 
     User.findOne({ email: req.params.email }, function (err, user) {
         if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
-        if (user.isVerified) return res.status(400).send({ msg: 'This account has already been verified. Please log in.' });
+        if (user.isVerified) return res.status(400).send({ msg: 'This account has already been verified.You can now log in' });
  
         // Create a verification token, save it, and send email
         var token = new Token({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
@@ -49,5 +49,7 @@ router.get('/resend/:email', (req,res,next) => {
         });
     });
 })
+
+
 
 module.exports = router;
