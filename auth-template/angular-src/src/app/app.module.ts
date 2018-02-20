@@ -15,6 +15,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
@@ -30,7 +31,6 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 
 //Angular Material Imports
 import {MatToolbarModule} from '@angular/material';
-import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 
 
 const appRoutes: Routes =  [
@@ -39,7 +39,8 @@ const appRoutes: Routes =  [
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-  { path: '**', component: HomeComponent }
+  {path:'resetpw/:id', component: ResetPassComponent},
+  {path: '**', component: HomeComponent }
 ]
 
 @NgModule({
