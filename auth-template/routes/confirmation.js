@@ -81,7 +81,10 @@ router.post('/reset/password', (req,res,next) => {
         if (!token) return res.status(400).send({ type: 'not-verified', msg: 'We were unable to find a valid token. Your token my have expired.' });
 
         User.findOne({ email: req.body.email }, function (err, user) {
-        if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
+        if (!user){
+            console.log(user);
+            return res.status(400).send({ msg:'We were unable to find a user with that email.'});
+        }
         
         if(token._userId.toString !== user._id.toString){
             console.log(token._userId, user._id)

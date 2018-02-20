@@ -69,7 +69,7 @@ export class AuthService {
   resetPasswordRequestSubmission(user){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    console.log('before post')
+
     return this.http.post('confirmation/reset/password', user , {headers: headers})
       .map(res => res.json());
   }
