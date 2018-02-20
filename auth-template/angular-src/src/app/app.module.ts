@@ -30,6 +30,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 
 //Angular Material Imports
 import {MatToolbarModule} from '@angular/material';
+import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 
 
 const appRoutes: Routes =  [
@@ -50,6 +51,7 @@ const appRoutes: Routes =  [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
+    ResetPassComponent,
   ],
 
   imports: [
