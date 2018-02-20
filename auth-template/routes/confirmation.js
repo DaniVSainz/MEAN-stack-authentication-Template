@@ -108,6 +108,7 @@ router.post('/reset/password', (req,res,next) => {
         User.changePassword(user, (err,user)=>{
             if(err) res.status(400).send({ msg: 'Unknown error saving password, please contact support' });
 
+            token.remove();
             return res.status(200).send({ msg: `You've reset your password successfully for ${user.email}` });
         })
 
