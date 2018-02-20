@@ -19,7 +19,7 @@ export class ResetPassComponent implements OnInit {
   }
 
   resetPwSubmit(){
-    this.authService.resetPassword(this.email).subscribe(res=>{
+    this.authService.resetPasswordRequest(this.email).subscribe(res=>{
       this.success = res.success;
       this.flashMessage.show(res.msg, {cssClass: 'alert-danger', timeout: 3000});
     })

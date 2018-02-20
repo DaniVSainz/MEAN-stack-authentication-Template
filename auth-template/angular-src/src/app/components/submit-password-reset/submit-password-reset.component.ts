@@ -29,7 +29,9 @@ export class SubmitPasswordResetComponent implements OnInit {
     }
 
     if(this.validateService.validatePassword(user)){
-      this.authService.
+      this.authService.resetPasswordRequestSubmission(user).subscribe(res=>{
+        console.log('Inside response from service');
+      })
     }else{
       this.flashMessage.show('Your passwords are not identical', {cssClass: 'alert-danger', timeout: 3000});
     }

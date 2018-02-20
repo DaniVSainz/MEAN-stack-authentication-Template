@@ -58,11 +58,19 @@ export class AuthService {
     localStorage.clear();
   }
 
-  resetPassword(email){
+  resetPasswordRequest(email){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log('before post')
     return this.http.post('confirmation/reset', {email: email}, {headers: headers})
+      .map(res => res.json());
+  }
+
+  resetPasswordRequestSubmission(user){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log('before post')
+    return this.http.post('confirmation/reset/password', {email: email}, {headers: headers})
       .map(res => res.json());
   }
 }
