@@ -7,7 +7,7 @@ export class ValidateService {
 
   validateRegister(user) {
     if(user.name == undefined || user.email == undefined || user.username == undefined || user.password == undefined) {
-        return false;
+      return false;
     } else {
       return true;
     }
@@ -15,10 +15,8 @@ export class ValidateService {
 
 validatePassword(user){
   if(user.password != user.passwordB){
-    console.log(user.password, user.passwordB);
     return false;
   }else{
-    console.log(user.password, user.passwordB , true);
     return true;
   }
 }

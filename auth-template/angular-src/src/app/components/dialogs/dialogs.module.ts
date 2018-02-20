@@ -6,6 +6,7 @@ import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    FlashMessagesModule.forRoot(),
   ],
   declarations: [AuthDialogComponent],
   exports: [AuthDialogComponent],
