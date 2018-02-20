@@ -28,6 +28,9 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 //Flash message will be replaced for the module below.
 import { SimpleNotificationsModule } from 'angular2-notifications';
 
+//Angular Material Imports
+import {MatToolbarModule} from '@angular/material';
+
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
@@ -59,7 +62,8 @@ const appRoutes: Routes =  [
     FlexLayoutModule,
     FlashMessagesModule.forRoot(),
     //Will remove the above after full replacement.
-    SimpleNotificationsModule.forRoot()
+    SimpleNotificationsModule.forRoot(),
+    MatToolbarModule
   ],
 
   providers: [ValidateService, AuthService, AuthGuard],

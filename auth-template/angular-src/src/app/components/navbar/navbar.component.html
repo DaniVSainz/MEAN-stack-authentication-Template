@@ -1,10 +1,11 @@
-<div id="navbar">
+<mat-toolbar>
+    <span>My Application</span>
     <ul class="right">
         <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="openDialog('login')" class='no-drop'>LOGIN</a></li>
         <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="openDialog('register')" class='no-drop'>REGISTER</a></li>
 
         <!-- <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/workout']">Workout History</a></li> -->
         <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']" class='no-drop'>{{authTokenService.currentUserData.email}}</a></li>
-        <li *ngIf="(authService.userSignedIn$ | async)"><a (click)="logOut()" class='no-drop'>Logout</a></li>
+        <li *ngIf="(authService.loggedIn())"><a (click)="onLogoutClick()" class='no-drop'>Logout</a></li>
     </ul>
-</div>
+  </mat-toolbar>
