@@ -56,6 +56,17 @@ router.post('/reset', (req,res,next) => {
     User.findOne({ email: req.body.email }, function (err, user) {
         if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
 
+        resetPassToken.find({_userId: user._id} , (err,tokens) =>{
+            if(err){
+                return res.status(400).send({ msg: 'Error' });
+            }
+            if(tokens){
+                tokens.forEach(token=>{
+                    token.remove();
+                })
+            }
+        })
+
         var token = new resetPassToken({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
         token.save(function (err) {
         if (err) { return res.status(500).send({ msg: err.message }); }
