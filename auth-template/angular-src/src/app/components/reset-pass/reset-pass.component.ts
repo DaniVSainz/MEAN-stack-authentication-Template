@@ -1,3 +1,4 @@
+import { FlashMessagesService } from 'angular2-flash-messages';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -9,7 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ResetPassComponent implements OnInit {
   email:String;
-  constructor(private authService:AuthService){}
+  success:Boolean;
+  constructor(private authService:AuthService,
+              private flashMessage:FlashMessagesService){}
 
   ngOnInit() {
 
@@ -17,7 +20,8 @@ export class ResetPassComponent implements OnInit {
 
   resetPwSubmit(){
     this.authService.resetPassword(this.email).subscribe(res=>{
-      console.log(res);
+      this.success = res.success;
+      this.flashMessage.show(res.msg, {cssClass: 'alert-danger', timeout: 3000});
     })
   }
 

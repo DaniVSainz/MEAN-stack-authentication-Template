@@ -69,7 +69,7 @@ router.post('/reset', (req,res,next) => {
                                     For your security this link only works for 1 hour.`};
         transporter.sendMail(mailOptions, function (err) {
             if (err) { return res.status(500).send({ msg: err.message }); }
-            return res.status(200).send({msg: `A verification email has been sent to : ${user.email}`});
+            return res.status(200).send({success:true, msg: `A verification email has been sent to : ${user.email}`});
         });
     });
     });
