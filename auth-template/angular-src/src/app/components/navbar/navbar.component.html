@@ -5,7 +5,7 @@
         <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="openDialog('register')" class='no-drop'>REGISTER</a></li>
 
         <!-- <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/workout']">Workout History</a></li> -->
-        <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']" class='no-drop'>{{authTokenService.currentUserData.email}}</a></li>
+        <li *ngIf="(authService.loggedIn())"><a [routerLink]="['/profile']" class='no-drop'>Profile</a></li>
         <li *ngIf="(authService.loggedIn())"><a (click)="onLogoutClick()" class='no-drop'>Logout</a></li>
     </ul>
   </mat-toolbar>
