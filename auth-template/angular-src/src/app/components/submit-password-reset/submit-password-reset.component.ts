@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ValidateService } from './../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AuthService } from './../../services/auth.service';
@@ -18,7 +18,9 @@ export class SubmitPasswordResetComponent implements OnInit {
   constructor(private authService:AuthService,
               private flashMessage:FlashMessagesService,
               private validateService:ValidateService,
-              private route: ActivatedRoute){}
+              private route: ActivatedRoute,
+              private router: Router,
+            ){}
 
   ngOnInit() {
     this.route.params.subscribe(params=>{
@@ -39,6 +41,7 @@ export class SubmitPasswordResetComponent implements OnInit {
     if(this.validateService.validatePassword(user)){
       this.authService.resetPasswordRequestSubmission(user).subscribe(res=>{
         this.flashMessage.show(res.msg , {cssClass: 'alert-danger', timeout: 3000});
+        this.router.navigate(['/login']);
       })
     }else{
       this.flashMessage.show('Your passwords are not identical', {cssClass: 'alert-danger', timeout: 3000});
