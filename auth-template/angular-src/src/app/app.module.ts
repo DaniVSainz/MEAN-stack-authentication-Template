@@ -31,6 +31,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 
 //Angular Material Imports
 import {MatToolbarModule} from '@angular/material';
+import { SubmitPasswordResetComponent } from './components/submit-password-reset/submit-password-reset.component';
 
 
 const appRoutes: Routes =  [
@@ -53,6 +54,7 @@ const appRoutes: Routes =  [
     DashboardComponent,
     ProfileComponent,
     ResetPassComponent,
+    SubmitPasswordResetComponent,
   ],
 
   imports: [
