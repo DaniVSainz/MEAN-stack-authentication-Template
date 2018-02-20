@@ -73,9 +73,30 @@ router.post('/reset', (req,res,next) => {
         });
     });
     });
-
-    
 });
+
+router.post('/reset/password', (req,res,next) => {
+    console.log(req.body);
+    resetPassToken.findOne({ token: req.body.token }, function (err, token) {
+        if (!token) return res.status(400).send({ type: 'not-verified', msg: 'We were unable to find a valid token. Your token my have expired.' });
+
+        User.findOne({ email: req.body.email }, function (err, user) {
+        if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
+        
+        if(token._userId != user._id){
+            return res.status(400).send({ msg: 'Email provided does not match this password reset token.' });
+        }
+
+        user.password = req.body.password;
+        user.save(err =>{
+            if(err)  return handleError(err);
+            //User was saved
+            return res.status(200).send({ msg: `You've reset your password successfully` });
+            })
+
+        })
+    })    
+})
 
 
 

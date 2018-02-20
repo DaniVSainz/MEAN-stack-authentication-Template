@@ -32,7 +32,8 @@ export class SubmitPasswordResetComponent implements OnInit {
     const user= {
       email:this.email,
       password:this.password,
-      passwordB:this.passwordB
+      passwordB:this.passwordB,
+      token:this.token
     }
 
     if(this.validateService.validatePassword(user)){
