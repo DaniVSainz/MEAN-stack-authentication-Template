@@ -65,7 +65,7 @@ router.post('/reset', (req,res,next) => {
         var mailOptions = { from: 'no-reply@yourwebapplication.com',
                              to: user.email, subject: 'Account Password Reset',
                              text: `Hello \n\n 
-                                    You can reset your password by visiting: http://${req.headers.host}/confirmation/${user.email}/${token.token} \n\n
+                                    You can reset your password by visiting: http://${req.headers.host}/resetpw/${token.token} \n\n
                                     For your security this link only works for 1 hour.`};
         transporter.sendMail(mailOptions, function (err) {
             if (err) { return res.status(500).send({ msg: err.message }); }
@@ -83,16 +83,21 @@ router.post('/reset/password', (req,res,next) => {
         User.findOne({ email: req.body.email }, function (err, user) {
         if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
         
-        if(token._userId != user._id){
+        if(token._userId.toString !== user._id.toString){
+            console.log(token._userId, user._id)
             return res.status(400).send({ msg: 'Email provided does not match this password reset token.' });
         }
-
+        console.log('Tokens match');
+        //If token user id and email user id match
         user.password = req.body.password;
-        user.save(err =>{
-            if(err)  return handleError(err);
-            //User was saved
-            return res.status(200).send({ msg: `You've reset your password successfully` });
-            })
+
+        User.changePassword(user, (err,user)=>{
+            if(err) res.status(400).send({ msg: 'Unknown error saving password, please contact support' });
+
+            return res.status(200).send({ msg: `You've reset your password successfully for ${user.email}` });
+        })
+
+        // return res.status(200).send({ msg: `You've reset your password successfully` });
 
         })
     })    
