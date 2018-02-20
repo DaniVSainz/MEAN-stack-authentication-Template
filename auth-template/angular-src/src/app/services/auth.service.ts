@@ -70,7 +70,7 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log('before post')
-    return this.http.post('confirmation/reset/password', {email: email}, {headers: headers})
+    return this.http.post('confirmation/reset/password', user , {headers: headers})
       .map(res => res.json());
   }
 }

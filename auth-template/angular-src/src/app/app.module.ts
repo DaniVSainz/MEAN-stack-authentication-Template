@@ -41,6 +41,7 @@ const appRoutes: Routes =  [
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'resetpw', component: ResetPassComponent},
+  {path:'resetpw/:token', component: SubmitPasswordResetComponent},
   {path: '**', component: HomeComponent }
 ]
 

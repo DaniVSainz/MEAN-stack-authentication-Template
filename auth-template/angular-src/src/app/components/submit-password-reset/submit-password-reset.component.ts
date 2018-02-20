@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { ValidateService } from './../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AuthService } from './../../services/auth.service';
@@ -12,12 +13,18 @@ export class SubmitPasswordResetComponent implements OnInit {
   email:String;
   password:String;
   passwordB:String;
+  token:String;
   
   constructor(private authService:AuthService,
               private flashMessage:FlashMessagesService,
-              private validateService:ValidateService){}
+              private validateService:ValidateService,
+              private route: ActivatedRoute){}
 
   ngOnInit() {
+    this.route.params.subscribe(params=>{
+      this.token = params.token;
+    })
+    console.log(this.token);
   }
 
   passwordResetSubmit(){
