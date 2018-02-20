@@ -51,9 +51,9 @@ router.get('/resend/:email', (req,res,next) => {
     });
 })
 
-router.get('/reset/:email', (req,res,next) => {
-
-    User.findOne({ email: req.params.email }, function (err, user) {
+router.post('/reset', (req,res,next) => {
+    console.log(req.body);
+    User.findOne({ email: req.body.email }, function (err, user) {
         if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
 
         var token = new resetPassToken({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
@@ -69,7 +69,7 @@ router.get('/reset/:email', (req,res,next) => {
                                     For your security this link only works for 1 hour.`};
         transporter.sendMail(mailOptions, function (err) {
             if (err) { return res.status(500).send({ msg: err.message }); }
-            res.status(200).send('A verification email has been sent to ' + user.email + '.');
+            return res.status(200).send({msg: `A verification email has been sent to : ${user.email}`});
         });
     });
     });

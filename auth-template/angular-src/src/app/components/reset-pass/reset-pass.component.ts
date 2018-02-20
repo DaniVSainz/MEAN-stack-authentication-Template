@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,12 +8,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./reset-pass.component.scss']
 })
 export class ResetPassComponent implements OnInit {
-
-  constructor(private route: ActivatedRoute) {
-    this.route.params.subscribe( params => console.log(params) );
-}
+  email:String;
+  constructor(private authService:AuthService){}
 
   ngOnInit() {
+
+  }
+
+  resetPwSubmit(){
+    this.authService.resetPassword(this.email).subscribe(res=>{
+      console.log(res);
+    })
   }
 
 }
