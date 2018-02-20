@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const Token = require('../models/verificationToken')
+const resetPassToken = require('../models/resetToken');
 const User = require('../models/user');
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
@@ -49,6 +50,32 @@ router.get('/resend/:email', (req,res,next) => {
         });
     });
 })
+
+router.get('/reset/:email', (req,res,next) => {
+
+    User.findOne({ email: req.params.email }, function (err, user) {
+        if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
+
+        var token = new resetPassToken({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
+        token.save(function (err) {
+        if (err) { return res.status(500).send({ msg: err.message }); }
+
+        // Send the email
+        var transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: process.env.userEmail, pass: process.env.userPass } });
+        var mailOptions = { from: 'no-reply@yourwebapplication.com',
+                             to: user.email, subject: 'Account Password Reset',
+                             text: `Hello \n\n 
+                                    You can reset your password by visiting: http://${req.headers.host}/confirmation/${user.email}/${token.token} \n\n
+                                    For your security this link only works for 1 hour.`};
+        transporter.sendMail(mailOptions, function (err) {
+            if (err) { return res.status(500).send({ msg: err.message }); }
+            res.status(200).send('A verification email has been sent to ' + user.email + '.');
+        });
+    });
+    });
+
+    
+});
 
 
 

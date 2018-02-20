@@ -58,7 +58,7 @@ router.post('/authenticate', (req, res, next) => {
       return res.json({success: false, msg: 'User not found'});
     }
     if(user.isVerified == false){
-      return res.json({success: false, msg: `Email is not verified or you're in the process of resetting your Password and have not finished.`})
+      return res.json({success: false, msg: `Email is not verified, please verify to log in.`})
     }
     User.comparePassword(password, user.password, (err, isMatch) => {
       if(err) throw err;
