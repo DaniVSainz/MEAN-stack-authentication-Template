@@ -21,7 +21,7 @@ router.post('/verifyEmail', (req, res, next) => {
             user.isVerified = true;
             user.save(function (err) {
                 if (err) { return res.status(500).send({ msg: err.message }); }
-                res.status(200).send("The account has been verified. Please log in.");
+                res.status(200).send({success:true,msg:"You're now verified and can login"});
             });
         });
     });

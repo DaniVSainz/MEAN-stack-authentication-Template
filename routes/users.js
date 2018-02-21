@@ -35,7 +35,9 @@ router.post('/register',  (req, res, next) => {
               }
                           // Send the email
             var transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: process.env.userEmail, pass: process.env.userPass } });
-            var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+            var mailOptions = { from: 'no-reply@yourwebapplication.com',
+                                 to: user.email, subject: 'Account Verification Token',
+                                  text: `Hello,\n\n  Please verify your account by clicking the link: \n http://${req.headers.host}/emailVerification/${token.token}  \n` };
             transporter.sendMail(mailOptions, function (err) {
                 if (err) { return res.status(500).send({ msg: err.message }); }
                 res.json({success: true, msg: "You've successfully registered, please check your email to confirm your email address."});

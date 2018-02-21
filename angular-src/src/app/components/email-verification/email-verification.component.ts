@@ -23,9 +23,14 @@ export class EmailVerificationComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params=>{
     this.token = params.token;
-  })
+    })
     this.verifyEmail();
   }
+
+  // ngAfterViewInit(){
+  //   this.verifyEmail();
+  // }
+
 
   verifyEmail(){
     this.authService.verifyEmail(this.token).subscribe(res=>{
