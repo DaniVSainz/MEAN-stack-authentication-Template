@@ -41,5 +41,7 @@ node or nodemon bin/www
 
 your app should be hosted on localhost:3000 now  
 
+Since dependancies from angular / Node app were seperated to deploy to heroku you must copy and past the NON-DEV dependancies into the root package.json before deploying to heroku as if not there's issues.
+
 
 
