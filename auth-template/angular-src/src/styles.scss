@@ -1,7 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+.alert-danger{
+  background-color: red;
+}
 
+.alert-success{
+  background-color: green;
+}
 
 //All of the below is just for our loading animation
 @-webkit-keyframes square-animation {
