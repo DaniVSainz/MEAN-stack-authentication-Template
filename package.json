@@ -1,6 +1,7 @@
-{  "engines": {
+{
+  "engines": {
     "node": "8.9.4"
-},
+  },
   "scripts": {
     "build": "cd angular-src && ng build && cd ..",
     "heroku-prebuild": "cd angular-src && npm i && cd ..",
@@ -8,7 +9,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@angular-devkit/core": "0.0.28",
     "bcryptjs": "2.4.3",
     "body-parser": "1.18.2",
     "cors": "2.8.4",
@@ -20,34 +20,9 @@
     "node-env-file": "^0.1.8",
     "nodemailer": "^4.4.2",
     "passport": "0.4.0",
-    "passport-jwt": "3.0.1",
-
-    "@angular/animations": "^5.2.1",
-    "@angular/cdk": "^5.1.0",
-    "@angular/common": "^5.0.0",
-    "@angular/compiler": "^5.0.0",
-    "@angular/core": "^5.0.0",
-    "@angular/flex-layout": "^2.0.0-beta.12",
-    "@angular/forms": "^5.0.0",
-    "@angular/http": "^5.0.0",
-    "@angular/material": "^5.1.0",
-    "@angular/platform-browser": "^5.0.0",
-    "@angular/platform-browser-dynamic": "^5.0.0",
-    "@angular/router": "^5.0.0",
-    "@jaspero/ng2-alerts": "0.0.7",
-    "angular2-flash-messages": "^2.0.5",
-    "angular2-jwt": "^0.2.3",
-    "angular2-notifications": "^0.9.7",
-    "core-js": "^2.4.1",
-    "hammerjs": "^2.0.8",
-    "rxjs": "^5.5.2",
-    "zone.js": "^0.8.14",
-    "@angular/compiler-cli": "^5.0.0",
-    "@angular/cli": "1.6.3"
+    "passport-jwt": "3.0.1"
   },
   "author": "",
   "license": "MIT",
-  "devDependencies": {
-    "@angular/cli": "^1.6.0"
-  }
+  "devDependencies": {}
 }
