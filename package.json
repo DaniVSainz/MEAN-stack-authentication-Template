@@ -1,6 +1,7 @@
 {
   "scripts": {
     "build": "cd angular-src && ng build",
+    "heroku-prebuild": "cd angular-src && npm i && ng build",
     "start": "node ./bin/www"
   },
   "dependencies": {
