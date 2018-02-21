@@ -45,7 +45,16 @@ your app should be hosted on localhost:3000 now
 ## Heroku Deploy instructions
 Since dependancies from angular / Node app were seperated in the case of me ever splitting it into two apps this causes issues with heroku.  
 
-##### However it takes 1 minute to fix.Go into angular-src/ package.json and copy the dependancies.Add them to them to the dependancies of the root folder's package.json.Deploy to heroku and done.
+##### However it takes 1 minute to fix.Go into angular-src/ package.json and copy the dependancies.Add them to them to the dependancies of the root folder's package.json.Deploy to heroku and done.  
+
+Then you must go into heroku and set the .env variables.You can do this from their website or the console.  
+Takes 1 min  
+set  
+##### The provider must be gmail as that is set in our emailing service, you get around 500 emails daily with this and avoids   
+##### the hassle of registering on real emailing services.
+userEmail=XXXXXX@gmail.com  
+userPass=XXXXXX  
+
 
 
 
