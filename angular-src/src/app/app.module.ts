@@ -33,6 +33,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import {MatToolbarModule} from '@angular/material';
 import { SubmitPasswordResetComponent } from './components/submit-password-reset/submit-password-reset.component';
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
+import { ResendEmailVerificationComponent } from './components/resend-email-verification/resend-email-verification.component';
 
 
 const appRoutes: Routes =  [
@@ -59,6 +60,7 @@ const appRoutes: Routes =  [
     ResetPassComponent,
     SubmitPasswordResetComponent,
     EmailVerificationComponent,
+    ResendEmailVerificationComponent,
   ],
 
   imports: [
