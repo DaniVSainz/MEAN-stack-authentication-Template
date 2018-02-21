@@ -2,8 +2,8 @@
     "node": "8.9.4"
 },
   "scripts": {
-    "build": "cd angular-src && ng build",
-    "heroku-prebuild": "cd angular-src && npm i && ng build",
+    "build": "cd angular-src && ng build && cd ..",
+    "heroku-prebuild": "cd angular-src && npm i && cd ..",
     "start": "node ./bin/www"
   },
   "dependencies": {
