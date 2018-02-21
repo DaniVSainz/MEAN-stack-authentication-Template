@@ -24,7 +24,14 @@ export class EmailVerificationComponent implements OnInit {
     this.route.params.subscribe(params=>{
     this.token = params.token;
   })
-    console.log(this.token);
+    this.verifyEmail();
   }
+
+  verifyEmail(){
+    this.authService.verifyEmail(this.token).subscribe(res=>{
+      this.flashMessage.show(res.msg, {cssClass: 'alert-success', timeout: 5000})
+      this.router.navigate(['login']);
+    });
+  };
 
 }

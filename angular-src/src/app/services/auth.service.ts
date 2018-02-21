@@ -20,6 +20,14 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  verifyEmail(token){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log('before post')
+    return this.http.post('confirmation/verifyEmail', {token}, {headers: headers})
+      .map(res => res.json());
+  }
+
   authenticateUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

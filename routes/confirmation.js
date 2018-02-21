@@ -7,9 +7,9 @@ const User = require('../models/user');
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 
-router.get('/:id', (req, res, next) => {
+router.post('/verifyEmail', (req, res, next) => {
 
-    Token.findOne({ token: req.params.id }, function (err, token) {
+    Token.findOne({ token: req.body.token }, function (err, token) {
         if (!token) return res.status(400).send({ type: 'not-verified', msg: 'We were unable to find a valid token. Your token my have expired.' });
  
         // If we found a token, find a matching user
