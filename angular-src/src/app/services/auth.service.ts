@@ -13,6 +13,13 @@ export class AuthService {
       // this.isDev = true;  // Change to false before deployment
       }
 
+  // registerUser(user) {
+  //   let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   return this.http.post('users/register', user, {headers: headers})
+  //     .map(res => res.json());
+  // }
+
   registerUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
