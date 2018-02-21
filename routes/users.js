@@ -61,7 +61,7 @@ router.post('/register', async (req,res,next) => {
       password: req.body.password
     });
     let user;
-    
+
     //Check if username is unique
     user = await User.findOne({username: newUser.username});
     if (user) {
@@ -74,7 +74,7 @@ router.post('/register', async (req,res,next) => {
       return res.status(400).send({success: false, msg: `An Account with email:  ${newUser.email} already exists`});
     }
 
-    user = await User.addUser(newUser , (err,user)=>{
+    User.addUser(newUser , (err,user)=>{
       if (err) res.send({success: false, msg: 'Failed to register user'});
       else{
         token = new Token({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
