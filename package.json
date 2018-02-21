@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "cd angular-src && ng build --watch",
+    "build": "cd angular-src && ng build",
     "start": "node ./bin/www"
   },
   "dependencies": {
