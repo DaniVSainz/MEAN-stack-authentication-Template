@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "cd angular-src && ng build --watch",
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "@angular-devkit/core": "0.0.28",
