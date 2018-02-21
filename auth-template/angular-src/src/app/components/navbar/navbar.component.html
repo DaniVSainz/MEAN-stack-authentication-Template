@@ -1,5 +1,5 @@
 <mat-toolbar>
-    <span>My Application</span>
+        <a routerLink="/home" ><span>My Application</span></a>
     <ul class="right">
         <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="openDialog('login')" class='no-drop'>LOGIN</a></li>
         <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="openDialog('register')" class='no-drop'>REGISTER</a></li>
