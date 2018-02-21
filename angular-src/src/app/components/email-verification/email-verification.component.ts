@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class EmailVerificationComponent implements OnInit {
 
   token:String;
+  msg:String = '';
 
   constructor(private authService:AuthService,
     private flashMessage:FlashMessagesService,
@@ -34,10 +35,12 @@ export class EmailVerificationComponent implements OnInit {
 
   verifyEmail(){
     this.authService.verifyEmail(this.token).subscribe(res=>{
+      this.msg = res.msg;
       this.flashMessage.show(res.msg, {cssClass: 'alert-success', timeout: 5000})
       this.router.navigate(['login']);
     }, err =>{
       err = err.json();
+      this.msg = err.msg;
       this.flashMessage.show(err.msg, {cssClass: 'alert-danger', timeout: 5000})
     })
   };
