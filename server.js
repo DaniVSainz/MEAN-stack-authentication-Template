@@ -39,10 +39,10 @@ const app = express();
 const users = require('./routes/users');
 const confirmation = require('./routes/confirmation');
 
+//The port number inside of bin/www takes precendence
 // Port Number
 const port = process.env.PORT || 8080;
 
-console.log(`Listening on port: ${port}`);
 
 app.use(logger('dev'));
 
