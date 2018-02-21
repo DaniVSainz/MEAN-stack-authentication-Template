@@ -21,8 +21,7 @@
     "nodemailer": "^4.4.2",
     "passport": "0.4.0",
     "passport-jwt": "3.0.1",
-    // below was added
-    // "@angular-devkit/core": "0.0.28",
+
     "@angular/animations": "^5.2.1",
     "@angular/cdk": "^5.1.0",
     "@angular/common": "^5.0.0",
