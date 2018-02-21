@@ -23,23 +23,23 @@ Emails service with nodeemailer using gmail as its default which can easily be c
 Angular+Node api bundled together on same port to some this may be a bonus and to others not so much.You can easily seperate them.
 Easily deployed to heroku.
 
-How to use.
-Git clone the repo
-touch .env and set 
-userEmail=XXXXXX@gmail.com
-userPass=XXXXXX
-This is used for nodeemailer user registration and password reset emails
+How to use.  
+Git clone the repo  
+touch .env and set  
+userEmail=XXXXXX@gmail.com  
+userPass=XXXXXX  
+This is used for nodeemailer user registration and password reset emails  
 
-cd auth-template/
-npm install
-cd angular-src
-npm install
-ng build
+cd auth-template/  
+npm install  
+cd angular-src  
+npm install  
+ng build  
 
-cd..
-node or nodemon bin/www
+cd..  
+node or nodemon bin/www  
 
-your app should be hosted on localhost:3000 now
+your app should be hosted on localhost:3000 now  
 
 
 
