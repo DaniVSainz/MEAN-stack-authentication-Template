@@ -39,7 +39,7 @@ export class AuthDialogComponent implements OnInit{
   }
 
   onRegisterSubmit() {
-    let alert = "alert-sucess";
+
     const user = {
       name: this.name,
       email: this.email,
@@ -69,13 +69,11 @@ export class AuthDialogComponent implements OnInit{
 
     this.authService.registerUser(user).subscribe(
       data=>{
-
-        this.flashMessage.show(data.msg , {cssClass: alert, timeout: 3000});
+        this.flashMessage.show(data.msg , {cssClass: "alert-sucess", timeout: 3000});
         this.router.navigate(['/login']);
       },err =>{
         err=err.json();
         this.flashMessage.show(err.msg, {cssClass: 'alert-danger', timeout: 3000});
-        this.router.navigate(['/register']);
       }
     );
   }
