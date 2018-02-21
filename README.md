@@ -43,9 +43,6 @@ your app should be hosted on localhost:3000 now
 
 
 ## Heroku Deploy instructions
-Since dependancies from angular / Node app were seperated in the case of me ever splitting it into two apps this causes issues with heroku.  
-
-##### .Go into angular-src/ package.json and copy the dependancies.Add them to them to the dependancies of the root folder's package.json.You may need to run npm i to register this over to package.json  
 
 Go into config/database.js and set a mlab mongodb url.There's free tiers that take a minute to setup.  
 
