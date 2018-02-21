@@ -15,13 +15,13 @@ The app is meant to be cloned and serve as a starting point for any application.
     
     
 ## What went right.
-Lightweight
-Verification emails(with tokens created with expiration time of 12 hours)
-Reset password tokens(with resetTokens set to 1 hour)
-Emails service with nodeemailer using gmail as its default which can easily be changed.
-.env file with these email and password for nodemailer
-Angular+Node api bundled together on same port to some this may be a bonus and to others not so much.You can easily seperate them.
-Easily deployed to heroku.
+Lightweight  
+Verification emails(with tokens created with expiration time of 12 hours)  
+Reset password tokens(with resetTokens set to 1 hour)  
+Emails service with nodeemailer using gmail as its default which can easily be changed.  
+.env file with these email and password for nodemailer  
+Angular+Node api bundled together on same port to some this may be a bonus and to others not so much.You can easily seperate them.  
+Easily deployed to heroku.  
 
 How to use.  
 Git clone the repo  
