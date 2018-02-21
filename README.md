@@ -47,6 +47,8 @@ Since dependancies from angular / Node app were seperated in the case of me ever
 
 ##### However it takes 1 minute to fix.Go into angular-src/ package.json and copy the dependancies.Add them to them to the dependancies of the root folder's package.json.Deploy to heroku and done.  
 
+Go into config/database.js and set a mlab mongodb url.There's free tiers that take a minute to setup.  
+
 Then you must go into heroku and set the .env variables.You can do this from their website or the console.  
 Takes 1 min  
 set  
