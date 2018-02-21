@@ -1,6 +1,9 @@
 {
   "name": "auth-template",
   "version": "0.0.0",
+  "engines": {
+    "node": "8.9.3"
+  },
   "license": "MIT",
   "scripts": {
     "ng": "ng",
