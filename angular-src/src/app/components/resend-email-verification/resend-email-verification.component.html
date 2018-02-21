@@ -1,7 +1,7 @@
 <div>
   <h2 class="page-header">Password Reset</h2>
   <h2 *ngIf="success">We've sent you an email to reset your password!</h2>
-  <form (submit)="resetPwSubmit()" >
+  <form (submit)="resendEmailVerification()" >
     <div class="form-group">
       <label for="email">Email</label>
       <input type="email" [(ngModel)]="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">

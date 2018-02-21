@@ -52,8 +52,8 @@ const appRoutes: Routes =  [
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'resetpw', component: ResetPassComponent},
   {path:'resetpw/:token', component: SubmitPasswordResetComponent},
+  {path:'resend/emailVerification', component: ResendEmailVerificationComponent},
   {path:'emailVerification/:token', component: EmailVerificationComponent},
-  {path:'emailVerification/resend', component: ResendEmailVerificationComponent},
   {path: '**', component: HomeComponent }
 ]
 

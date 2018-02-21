@@ -10,7 +10,7 @@ var nodemailer = require('nodemailer');
 router.post('/verifyEmail', (req, res, next) => {
 
     Token.findOne({ token: req.body.token }, function (err, token) {
-        if (!token) return res.status(400).send({ type: 'not-verified', msg: 'We were unable to find a valid token. Your token my have expired.' });
+        if (!token) return res.status(400).send({ type: 'not-verified', msg: 'We were unable to find a valid token. Your token may have expired.' });
  
         // If we found a token, find a matching user
         User.findOne({ _id: token._userId }, function (err, user) {
@@ -27,9 +27,9 @@ router.post('/verifyEmail', (req, res, next) => {
     });
 })
 
-router.get('/resend/:email', (req,res,next) => {
+router.post('/verifyEmail/resend', (req,res,next) => {
 
-    User.findOne({ email: req.params.email }, function (err, user) {
+    User.findOne({ email: req.body.email }, function (err, user) {
         if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
         if (user.isVerified) return res.status(400).send({ msg: 'This account has already been verified.You can now log in' });
  

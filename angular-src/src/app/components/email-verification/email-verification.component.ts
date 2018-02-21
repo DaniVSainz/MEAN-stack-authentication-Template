@@ -36,7 +36,10 @@ export class EmailVerificationComponent implements OnInit {
     this.authService.verifyEmail(this.token).subscribe(res=>{
       this.flashMessage.show(res.msg, {cssClass: 'alert-success', timeout: 5000})
       this.router.navigate(['login']);
-    });
+    }, err =>{
+      err = err.json();
+      this.flashMessage.show(err.msg, {cssClass: 'alert-danger', timeout: 5000})
+    })
   };
 
 }
