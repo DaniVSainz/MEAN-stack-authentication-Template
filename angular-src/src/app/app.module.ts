@@ -32,6 +32,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 //Angular Material Imports
 import {MatToolbarModule} from '@angular/material';
 import { SubmitPasswordResetComponent } from './components/submit-password-reset/submit-password-reset.component';
+import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
 
 
 const appRoutes: Routes =  [
@@ -42,6 +43,7 @@ const appRoutes: Routes =  [
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'resetpw', component: ResetPassComponent},
   {path:'resetpw/:token', component: SubmitPasswordResetComponent},
+  {path:'emailVerification/:token', component: EmailVerificationComponent},
   {path: '**', component: HomeComponent }
 ]
 
@@ -56,6 +58,7 @@ const appRoutes: Routes =  [
     ProfileComponent,
     ResetPassComponent,
     SubmitPasswordResetComponent,
+    EmailVerificationComponent,
   ],
 
   imports: [
