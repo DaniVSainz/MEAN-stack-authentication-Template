@@ -26,6 +26,8 @@ Easily deployed to heroku.
 How to use.  
 Git clone the repo  
 touch .env and set  
+Mongo url use mlab or your own local mongo mine was port 27017   
+mongoUrl=mongodb://localhost:27017/auth-template
 userEmail=XXXXXX@gmail.com  
 userPass=XXXXXX  
 This is used for nodeemailer user registration and password reset emails  
@@ -44,7 +46,7 @@ your app should be hosted on localhost:3000 now
 
 ## Heroku Deploy instructions
 
-Go into config/database.js and set a mlab mongodb url.There's free tiers that take a minute to setup.  
+#### Set a mongoUrl='your mongo db url' in .env file in Heroku
 
 Then you must go into heroku and set the .env variables.You can do this from their website or the console.  
 Takes 1 min  
