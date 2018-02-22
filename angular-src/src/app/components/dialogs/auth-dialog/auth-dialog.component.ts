@@ -89,18 +89,19 @@ export class AuthDialogComponent implements OnInit{
       password: this.password
     }
 
-    this.authService.authenticateUser(user).subscribe(data => {
-        if(data.success) {
-          this.authService.storeUserData(data.token, data.user);
-          this.flashMessage.show('You are now logged in', {cssClass: 'alert-success', timeout: 5000});
-          this.msgDialog= data.msg;
-          this.dialogRef.close();
-          this.router.navigate(['dashboard']);
-        } else {
-          this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 5000});
-          this.msgDialog= data.msg;
-        }
+    this.authService.authenticateUser(user).subscribe(
+      res => {
+        this.authService.storeUserData(res.token, res.user);
+        this.flashMessage.show('You are now logged in', {cssClass: 'alert-success', timeout: 5000});
+        this.msgDialog= res.msg;
+        this.alertColor="alert-success";
+        this.dialogRef.close();
+        this.router.navigate(['dashboard']);
+      },err => {
+        err=err.json();
+        this.flashMessage.show(err.msg, {cssClass: 'alert-danger', timeout: 5000});
+        this.alertColor="alert-danger";
+        this.msgDialog= err.msg;
     });
   }
-  
 }
