@@ -18,7 +18,7 @@ export class ResetPassComponent implements OnInit {
 
   }
 
-  resetPwSubmit(){
+  resetPwRequest(){
     this.authService.resetPasswordRequest(this.email).subscribe(
       res=>{
         this.success = res.success;
