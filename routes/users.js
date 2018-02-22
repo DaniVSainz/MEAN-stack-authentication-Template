@@ -81,6 +81,7 @@ router.post('/authenticate', (req, res, next) => {
           expiresIn: 604800 // 1 week
         });
         res.status(200).send({
+          msg:`You're now logged in`,
           success: true,
           token: 'JWT '+token,
           user: {

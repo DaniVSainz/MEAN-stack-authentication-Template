@@ -23,6 +23,7 @@ export class AuthDialogComponent implements OnInit{
   register: Boolean;
   msgDialog:String = '';
   alertColor:String='';
+  isVerified:Boolean=true;
 
   constructor(public dialogRef: MatDialogRef<AuthDialogComponent>,
     private validateService: ValidateService,
@@ -92,7 +93,7 @@ export class AuthDialogComponent implements OnInit{
     this.authService.authenticateUser(user).subscribe(
       res => {
         this.authService.storeUserData(res.token, res.user);
-        this.flashMessage.show('You are now logged in', {cssClass: 'alert-success', timeout: 5000});
+        this.flashMessage.show(res.msg, {cssClass: 'alert-success', timeout: 5000});
         this.msgDialog= res.msg;
         this.alertColor="alert-success";
         this.dialogRef.close();
@@ -101,6 +102,7 @@ export class AuthDialogComponent implements OnInit{
         err=err.json();
         this.flashMessage.show(err.msg, {cssClass: 'alert-danger', timeout: 5000});
         this.alertColor="alert-danger";
+        if( err.isVerified != undefined ) this.isVerified=err.isVerified;
         this.msgDialog= err.msg;
     });
   }
