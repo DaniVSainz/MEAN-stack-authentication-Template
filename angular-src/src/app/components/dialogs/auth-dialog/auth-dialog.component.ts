@@ -22,6 +22,7 @@ export class AuthDialogComponent implements OnInit{
   whatDialog: String;
   register: Boolean;
   msgDialog:String = '';
+  alertColor:String='';
 
   constructor(public dialogRef: MatDialogRef<AuthDialogComponent>,
     private validateService: ValidateService,
@@ -40,7 +41,6 @@ export class AuthDialogComponent implements OnInit{
   }
 
   onRegisterSubmit() {
-
     const user = {
       name: this.name,
       email: this.email,
@@ -65,13 +65,15 @@ export class AuthDialogComponent implements OnInit{
     // Register user
     this.authService.registerUser(user).subscribe(
       res=>{
-        this.flashMessage.show(res.msg , {cssClass: "alert-sucess", timeout: 3000});
+        this.flashMessage.show(res.msg , {cssClass: "alert-success", timeout: 3000});
         this.msgDialog= res.msg;
+        this.alertColor="alert-success";
         this.closeDialog();
         this.router.navigate(['/login']);
       },err =>{
         err=err.json();
         this.msgDialog= err.msg;
+        this.alertColor="alert-danger";
         this.flashMessage.show(err.msg, {cssClass: 'alert-danger', timeout: 3000});
       }
     );

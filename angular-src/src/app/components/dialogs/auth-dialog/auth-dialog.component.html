@@ -1,7 +1,7 @@
 
 <div *ngIf="register">
   <h2 class="page-header">Register</h2>
-  <p *ngIf="msgDialog">{{msgDialog}}</p>
+  <p *ngIf="msgDialog" [className]="alertColor">{{msgDialog}}</p>
   <form (submit)="onRegisterSubmit()" >
     <div class="form-group">
       <label for="name">Name</label>
@@ -29,7 +29,7 @@
 </div>
 <div *ngIf="!register">
   <h2 class="page-header" >Login</h2>
-  <p *ngIf="msgDialog">{{msgDialog}}</p>
+  <p *ngIf="msgDialog" [className]="alertColor">>{{msgDialog}}</p>
   <form class="form-signin" (submit)="onLoginSubmit()">
         <div class="form-group">
           <label for="Username">Username</label>
