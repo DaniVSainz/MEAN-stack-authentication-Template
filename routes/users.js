@@ -99,7 +99,14 @@ router.post('/authenticate', (req, res, next) => {
 
 // Profile
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-  res.json({user: req.user});
+  let tempUser = req.user;
+  let user = {
+    name: tempUser.name,
+    email: tempUser.email,
+    username: tempUser.username,
+    isVerified: tempUser.isVerified
+  }
+  res.status(200).send({user, msg:'Success'});
 });
 
 module.exports = router;
