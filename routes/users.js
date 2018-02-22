@@ -69,10 +69,10 @@ router.post('/authenticate', (req, res, next) => {
   User.getUserByUsername(username, (err, user) => {
     if(err) throw err;
     if(!user) {
-      return res.json({success: false, msg: 'Incorrect username or password'});
+      return res.status(400).send({success: false, msg: 'Incorrect username or password'});
     }
     if(user.isVerified == false){
-      return res.json({success: false, isVerified:false, msg: `Email is not verified, please verify to log in.`})
+      return res.status(400).send({success: false, isVerified:false, msg: `Email is not verified, please verify to log in.`})
     }
     User.comparePassword(password, user.password, (err, isMatch) => {
       if(err) throw err;
@@ -80,7 +80,7 @@ router.post('/authenticate', (req, res, next) => {
         const token = jwt.sign({data: user}, config.secret, {
           expiresIn: 604800 // 1 week
         });
-        res.json({
+        res.status(200).send({
           success: true,
           token: 'JWT '+token,
           user: {
@@ -89,9 +89,9 @@ router.post('/authenticate', (req, res, next) => {
             username: user.username,
             email: user.email
           }
-        })
+        });
       } else {
-        return res.json({success: false,isVerified:true, msg: 'Incorrect username or password'});
+        return res.status(200).send({success: false,isVerified:true, msg: 'Incorrect username or password'});
       }
     });
   });

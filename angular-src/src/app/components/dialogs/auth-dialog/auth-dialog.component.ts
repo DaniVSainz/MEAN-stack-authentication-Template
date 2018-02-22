@@ -48,33 +48,30 @@ export class AuthDialogComponent implements OnInit{
       password: this.password,
       passwordB: this.passwordB
     }
-
     // Required Fields
     if(!this.validateService.validateRegister(user)) {
       this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
-
     // Validate Email
     if(!this.validateService.validateEmail(user.email)) {
     this.flashMessage.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
-
     if(!this.validateService.validatePassword(user)) {
       this.flashMessage.show('Your password were not typed identicaly.Please try again.', {cssClass: 'alert-danger', timeout: 3000});
         return false;
       }
-
     // Register user
-
     this.authService.registerUser(user).subscribe(
       data=>{
         this.flashMessage.show(data.msg , {cssClass: "alert-sucess", timeout: 3000});
+        this.msgDialog= data.msg;
         this.closeDialog();
         this.router.navigate(['/login']);
       },err =>{
         err=err.json();
+        this.msgDialog= err.msg;
         this.flashMessage.show(err.msg, {cssClass: 'alert-danger', timeout: 3000});
       }
     );
@@ -94,12 +91,12 @@ export class AuthDialogComponent implements OnInit{
         if(data.success) {
           this.authService.storeUserData(data.token, data.user);
           this.flashMessage.show('You are now logged in', {cssClass: 'alert-success', timeout: 5000});
+          this.msgDialog= data.msg;
           this.dialogRef.close();
           this.router.navigate(['dashboard']);
         } else {
           this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 5000});
-          this.dialogRef.close();
-          this.router.navigate(['login']);
+          this.msgDialog= data.msg;
         }
     });
   }
