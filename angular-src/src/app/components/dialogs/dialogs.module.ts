@@ -1,3 +1,4 @@
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import { DialogsService } from './dialog.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,7 +7,6 @@ import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import { FlashMessagesModule } from 'angular2-flash-messages';
 import { RouterModule } from '@angular/router';
 
 
@@ -18,7 +18,7 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    FlashMessagesModule.forRoot(),
+    FlashMessagesModule,
     RouterModule
   ],
   declarations: [AuthDialogComponent],

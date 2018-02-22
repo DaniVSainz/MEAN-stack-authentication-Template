@@ -21,6 +21,7 @@ export class AuthDialogComponent implements OnInit{
   passwordB: String; 
   whatDialog: String;
   register: Boolean;
+  msgDialog:String = '';
 
   constructor(public dialogRef: MatDialogRef<AuthDialogComponent>,
     private validateService: ValidateService,
@@ -70,6 +71,7 @@ export class AuthDialogComponent implements OnInit{
     this.authService.registerUser(user).subscribe(
       data=>{
         this.flashMessage.show(data.msg , {cssClass: "alert-sucess", timeout: 3000});
+        this.closeDialog();
         this.router.navigate(['/login']);
       },err =>{
         err=err.json();
@@ -92,12 +94,12 @@ export class AuthDialogComponent implements OnInit{
         if(data.success) {
           this.authService.storeUserData(data.token, data.user);
           this.flashMessage.show('You are now logged in', {cssClass: 'alert-success', timeout: 5000});
-          this.router.navigate(['dashboard']);
           this.dialogRef.close();
+          this.router.navigate(['dashboard']);
         } else {
           this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 5000});
-          this.router.navigate(['login']);
           this.dialogRef.close();
+          this.router.navigate(['login']);
         }
     });
   }

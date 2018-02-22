@@ -18,3 +18,9 @@
         </div>
         <input class="btn btn-lg btn-primary" type="submit" value="Login">
 </form>
+<div *ngIf="!isVerified">
+  <p>Your account is not verified.Click below to get a new activation email.</p>
+  <div>
+    <a routerLink="/resend/emailVerification" >Verify Email</a>
+  </div> 
+</div>

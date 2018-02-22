@@ -11,6 +11,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class LoginComponent implements OnInit {
   username: String;
   password: String;
+  isVerified:Boolean = true;
 
   constructor(
     private authService: AuthService,
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['dashboard']);
         } else {
           this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 5000});
-          this.router.navigate(['login']);
+          this.isVerified = data.isVerified;
         }
     });
   }
