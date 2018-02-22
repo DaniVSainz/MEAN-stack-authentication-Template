@@ -8,23 +8,20 @@ const config = require('./config/database');
 var logger = require('morgan');
 require('dotenv').config()
 
-// Connect To Database (NEW) But not working!!!!!!!!!! (because of secret in db.js!!!!!)
-//const db = require('./config/database');
-// Map global promise - get rid of warning
-//mongoose.Promise = global.Promise;
-// Connect to mongoose
-//mongoose.connect(db.mongoURI, {
-    //useMongoClient: true
-//})
-//.then(() => console.log('MongoDB Connected...'))
-//.catch(err => console.log(err));
 
 mongoose.Promise = require('bluebird');
 // // Use q. Note that you **must** use `require('q').Promise`.
 // mongoose.Promise = require('q').Promise;
 
-// Connect To Database (OLD CODE)
-mongoose.connect(config.database);
+//Read Mongoose.connect below
+// // Connect To Database 
+// mongoose.connect(config.database);
+
+//Or USE this instead to connect to db if you rather use .env variables
+//Works easier with deploys and git not having to change stuff and just using .env vars
+mongoose.connect(process.env.mongoUrl);
+
+
 // On Connection
 mongoose.connection.on('connected', () => {
   console.log('Connected to Database '+config.database);
