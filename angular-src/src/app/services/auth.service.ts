@@ -3,13 +3,15 @@ import { Http, Headers } from '@angular/http';
 import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { tokenNotExpired } from 'angular2-jwt';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
   authToken: any;
   user: any;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private router:Router) {
       // this.isDev = true;  // Change to false before deployment
       }
 
@@ -77,6 +79,7 @@ export class AuthService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+    this.router.navigate(['']);
   }
 
   resetPasswordRequest(email){
@@ -92,6 +95,15 @@ export class AuthService {
     headers.append('Content-Type', 'application/json');
 
     return this.http.post('confirmation/reset/password', user , {headers: headers})
+      .map(res => res.json());
+  }
+
+  deleteUser(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.delete('users/delete', {headers: headers})
       .map(res => res.json());
   }
 }

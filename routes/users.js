@@ -109,4 +109,16 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
   res.status(200).send({user, msg:'Success'});
 });
 
+router.delete('/delete', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+  console.log('Inside delete')
+  try{
+    console.log(req.user);
+    req.user.remove();
+    res.status(200).json({success:'deleted user'});
+  }catch (e){
+    res.status(500).json({success: false, msg: `Encountered and Unknown error: ${err}`})
+    next(e) 
+  }
+})
+
 module.exports = router;

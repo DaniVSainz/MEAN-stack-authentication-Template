@@ -22,4 +22,15 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  deleteAccount(){
+    this.authService.deleteUser().subscribe(
+      res=>{
+        console.log(res);
+        this.authService.logout();
+      },err=>{
+        console.log(err);
+      }
+    )
+  }
+
 }
