@@ -52,15 +52,21 @@ export class AuthDialogComponent implements OnInit{
     // Required Fields
     if(!this.validateService.validateRegister(user)) {
       this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
+      this.msgDialog= 'Please fill in all fields';
+      this.alertColor="alert-danger";
       return false;
     }
     // Validate Email
     if(!this.validateService.validateEmail(user.email)) {
-    this.flashMessage.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
+      this.flashMessage.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
+      this.msgDialog= 'Please use a valid email';
+      this.alertColor="alert-danger";
       return false;
     }
     if(!this.validateService.validatePassword(user)) {
-      this.flashMessage.show('Your password were not typed identicaly.Please try again.', {cssClass: 'alert-danger', timeout: 3000});
+        this.flashMessage.show('Your password were not typed identicaly.Please try again.', {cssClass: 'alert-danger', timeout: 3000});
+        this.msgDialog= 'Your password were not typed identicaly.Please try again.';
+        this.alertColor="alert-danger";
         return false;
       }
     // Register user
