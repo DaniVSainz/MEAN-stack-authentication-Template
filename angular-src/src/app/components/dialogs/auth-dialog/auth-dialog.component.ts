@@ -64,9 +64,9 @@ export class AuthDialogComponent implements OnInit{
       }
     // Register user
     this.authService.registerUser(user).subscribe(
-      data=>{
-        this.flashMessage.show(data.msg , {cssClass: "alert-sucess", timeout: 3000});
-        this.msgDialog= data.msg;
+      res=>{
+        this.flashMessage.show(res.msg , {cssClass: "alert-sucess", timeout: 3000});
+        this.msgDialog= res.msg;
         this.closeDialog();
         this.router.navigate(['/login']);
       },err =>{
