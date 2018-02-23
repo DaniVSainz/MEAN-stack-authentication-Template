@@ -24,7 +24,7 @@ mongoose.connect(process.env.mongoUrl);
 
 // On Connection
 mongoose.connection.on('connected', () => {
-  console.log('Connected to Database '+config.database);
+  console.log('Connected to Database '+ process.env.mongoUrl);
 });
 // On Error
 mongoose.connection.on('error', (err) => {
