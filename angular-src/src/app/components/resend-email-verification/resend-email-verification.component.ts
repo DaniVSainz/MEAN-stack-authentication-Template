@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResendEmailVerificationComponent implements OnInit {
   email:String;
+  success:Boolean=false;
 
   constructor(private authService:AuthService,
               private flashMessage:FlashMessagesService){}
@@ -18,6 +19,7 @@ export class ResendEmailVerificationComponent implements OnInit {
 
   resendEmailVerification(){
     this.authService.resendVerificationEmail(this.email).subscribe(res=>{
+      this.success=true;
       this.flashMessage.show(res.msg, {cssClass: 'alert-success', timeout: 3000});
     })
   }

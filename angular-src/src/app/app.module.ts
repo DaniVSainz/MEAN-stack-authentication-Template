@@ -24,7 +24,6 @@ import { ResendEmailVerificationComponent } from './components/resend-email-veri
 //This module contains our auth modals for login and register plus some minimal logic to decide which to serve
 import { DialogsModule } from './components/dialogs/dialogs.module';
 
-
 //Services and guards
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
@@ -40,8 +39,12 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 
 //Angular Material Imports
 import {MatToolbarModule} from '@angular/material';
+//Flex layout is independant of material
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+//Service worker support
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 const appRoutes: Routes =  [
@@ -83,7 +86,8 @@ const appRoutes: Routes =  [
     FlashMessagesModule.forRoot(),
     //Will remove the above after full replacement.
     SimpleNotificationsModule.forRoot(),
-    MatToolbarModule
+    MatToolbarModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
 
   providers: [ValidateService, AuthService, AuthGuard],
