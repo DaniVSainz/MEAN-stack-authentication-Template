@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { SwUpdateService } from './services/swUpdate';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,18 @@ export class AppComponent implements OnInit {
   networkOnline:Boolean = true;
 
 
-  constructor(private flashMessage:FlashMessagesService){
+  constructor(private flashMessage:FlashMessagesService,
+              private update: SwUpdateService)
+  {
+    if(!navigator.onLine){
+      this.networkOnline=false;
+    }
   }
 
   ngOnInit(){
     window.addEventListener('online' , ()=>{
       this.flashMessage.show(`You're back online now` , {cssClass: 'alert-success', timeout: 3000});
+      this.networkOnline = true;
     });
     window.addEventListener('offline', ()=>{
       this.networkOnline=false;

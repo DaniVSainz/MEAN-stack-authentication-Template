@@ -38,14 +38,14 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 
 //Angular Material Imports
-import {MatToolbarModule} from '@angular/material';
+import {MatToolbarModule,MatSnackBarModule} from '@angular/material';
 //Flex layout is independant of material
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 //Service worker support
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
+import { SwUpdateService } from './services/swUpdate';
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
@@ -86,11 +86,11 @@ const appRoutes: Routes =  [
     FlashMessagesModule.forRoot(),
     //Will remove the above after full replacement.
     SimpleNotificationsModule.forRoot(),
-    MatToolbarModule,
+    MatToolbarModule,MatSnackBarModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
 
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard,SwUpdateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
