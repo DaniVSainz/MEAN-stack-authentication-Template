@@ -6,7 +6,8 @@
     "resources": {
       "files": [
         "/favicon.ico",
-        "/index.html"
+        "/index.html",
+        "/icon.png"
       ],
       "versionedFiles": [
         "/*.bundle.css",
@@ -21,6 +22,9 @@
     "resources": {
       "files": [
         "/assets/**"
+      ],
+      "urls": [
+        "https://fonts.googleapis.com/**"
       ]
     }
   }]

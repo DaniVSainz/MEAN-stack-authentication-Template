@@ -57,7 +57,7 @@ const appRoutes: Routes =  [
   {path:'resetpw/:token', component: SubmitPasswordResetComponent},
   {path:'resend/emailVerification', component: ResendEmailVerificationComponent},
   {path:'emailVerification/:token', component: EmailVerificationComponent},
-  {path: '**', component: HomeComponent }
+  {path: '**', redirectTo: ''}
 ]
 
 @NgModule({
