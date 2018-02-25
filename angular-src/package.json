@@ -11,7 +11,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "sw-build-live": "ng build --prod --base-href https://mymeanauthtemplate.herokuapp.com/ && node fix-sw"
   },
   "private": true,
   "dependencies": {
