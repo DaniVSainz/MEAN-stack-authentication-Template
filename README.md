@@ -44,6 +44,8 @@ It goes into the angular project installs dependancies, builds it, runs the PWA 
 then npm start triggers and your project will work aslong as the .env file was setup on heroku.
 
 
-
+#Important  
+Some icons are missing from the manifest and ngsw-config as setting up all the icons that will be replaced just felt useless.However you can still use  
+the add to home feature from mobile.
 
 
