@@ -3,8 +3,8 @@
     "node": "8.9.4"
   },
   "scripts": {
-    "build": "cd angular-src && ng build --prod && cd .. && node bin/www",
-    "heroku-postbuild": "cd angular-src && npm i && ng build --prod && cd ..",
+    "build": "cd angular-src && ng build --prod && node fix-sw && cd .. && node bin/www",
+    "heroku-postbuild": "cd angular-src && npm i && sw-build-live && cd ..",
     "start": "node ./bin/www"
   },
   "dependencies": {
