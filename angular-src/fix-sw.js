@@ -18,7 +18,9 @@ Has the thread from the creator of this tool
 * if not deploying to a live URL, and only running locally, set this to null, as the URL parsing fix will not be necessary
 */
 // const SITE_BASE_HREF = "https://mymeanauthtemplate.herokuapp.com/";
-const SITE_BASE_HREF = null;
+require('dotenv').config();
+
+const SITE_BASE_HREF = process.env.baseHref;
 
 
 
