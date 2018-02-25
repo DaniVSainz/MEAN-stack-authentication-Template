@@ -17,8 +17,8 @@ Git clone the repo
 touch .env and set  
 ##### Use one .env file on heroku/production and one different one in dev to save yourself the hassle of constantly changing values
 Mongo url use mlab or your own local mongo mine was port 27017   
-mongoUrl=mongodb://localhost:27017/auth-template
-userEmail=XXXXXX@gmail.com  
+mongoUrl=mongodb://localhost:27017/auth-template  
+userEmail=XXXXXX@gmail.com    
 userPass=XXXXXX  
 This is used for nodeemailer user registration and password reset emails  
 baseHref=Your sites production base href for developement set this to null  
@@ -44,7 +44,7 @@ It goes into the angular project installs dependancies, builds it, runs the PWA 
 then npm start triggers and your project will work aslong as the .env file was setup on heroku.
 
 
-#Important  
+# Important  
 Some icons are missing from the manifest and ngsw-config as setting up all the icons that will be replaced just felt useless.However you can still use  
 the add to home feature from mobile.
 
