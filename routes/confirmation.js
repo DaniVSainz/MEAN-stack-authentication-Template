@@ -42,7 +42,7 @@ router.post('/verifyEmail/resend', (req,res,next) => {
  
             // Send the email
             var transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: process.env.userEmail, pass: process.env.userPass } });
-            var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+            var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
             transporter.sendMail(mailOptions, function (err) {
                 if (err) { return res.status(500).send({ msg: err.message }); }
                 res.status(200).send('A verification email has been sent to ' + user.email + '.');
@@ -76,7 +76,7 @@ router.post('/reset', (req,res,next) => {
         var mailOptions = { from: 'no-reply@yourwebapplication.com',
                              to: user.email, subject: 'Account Password Reset',
                              text: `Hello \n\n 
-                                    You can reset your password by visiting: http://${req.headers.host}/resetpw/${token.token} \n\n
+                                    You can reset your password by visiting: https://${req.headers.host}/resetpw/${token.token} \n\n
                                     For your security this link only works for 1 hour.`};
         transporter.sendMail(mailOptions, function (err) {
             if (err) { return res.status(500).send({ msg: err.message }); }
