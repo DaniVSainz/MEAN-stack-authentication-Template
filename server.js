@@ -10,15 +10,8 @@ require('dotenv').config()
 
 
 mongoose.Promise = require('bluebird');
-// // Use q. Note that you **must** use `require('q').Promise`.
-// mongoose.Promise = require('q').Promise;
 
-//Read Mongoose.connect below
-// // Connect To Database 
-// mongoose.connect(config.database);
-
-//Or USE this instead to connect to db if you rather use .env variables
-//Works easier with deploys and git not having to change stuff and just using .env vars
+//MongoDBURL from inside your .env file
 mongoose.connect(process.env.mongoUrl);
 
 
@@ -36,9 +29,7 @@ const app = express();
 const users = require('./routes/users');
 const confirmation = require('./routes/confirmation');
 
-//The port number inside of bin/www takes precendence
-// Port Number
-const port = process.env.PORT || 8080;
+
 
 
 app.use(logger('dev'));
@@ -74,8 +65,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './angular-src/dist/index.html'));
 });
 
-// Start Server
-// app.listen(port, () => {
-//   console.log('Server started on port '+port);
-// });
+// Port Number
+const port = process.env.PORT || 8080;
 module.exports = app;
