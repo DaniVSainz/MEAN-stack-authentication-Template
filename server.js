@@ -34,21 +34,22 @@ const confirmation = require('./routes/confirmation');
 app.use('/users', users);
 app.use('/confirmation', confirmation);
 
-app.get('/', (req,res)=>{
-  res.send({msg:'Test Route'})
-})
 
 //Prod and Dev runs differently for hot reloading.
 //Logic to determine if running build in prod and act accordingly ie: serve static assists from build
 if(process.env.NODE_ENV === 'production' && process.env.frontEnd === 'React'){
+  //If we are in prod and your determined front end is React use this setup / folder
   app.use(express.static('client/build'));
-
   const path = require('path');
   app.get('*', (req,res)=>{
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  })
+  });
 }else if(process.env.frontEnd === 'Angular' ){
-  res.sendFile(path.join(__dirname, './angular-src/dist/index.html'));
+  //Else use angulars folder
+  app.use(express.static(path.join(__dirname, 'angular-src/dist')));
+  app.get('*', (req,res)=>{
+    res.sendFile(path.join(__dirname, './angular-src/dist/index.html'));
+  });
 }
 
 //Your local dev port or for heroku use the env port
