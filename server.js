@@ -10,61 +10,50 @@ require('dotenv').config()
 
 
 mongoose.Promise = require('bluebird');
-
-//MongoDBURL from inside your .env file
 mongoose.connect(process.env.mongoUrl);
-
-
-// On Connection
 mongoose.connection.on('connected', () => {
   console.log('Connected to Database '+ process.env.mongoUrl);
 });
-// On Error
 mongoose.connection.on('error', (err) => {
   console.log('Database error '+err);
 });
 
 const app = express();
-
-const users = require('./routes/users');
-const confirmation = require('./routes/confirmation');
-
-
-
-
 app.use(logger('dev'));
-
-
 // CORS Middleware
 app.use(cors());
-
-// Set Static Folder
-app.use(express.static(path.join(__dirname, 'angular-src/dist')));
-
 // Body Parser Middleware
 app.use(bodyParser.json());
-
 // Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
 require('./config/passport')(passport);
-
+//Routes
+const users = require('./routes/users');
+const confirmation = require('./routes/confirmation');
 app.use('/users', users);
 app.use('/confirmation', confirmation);
 
+app.get('/', (req,res)=>{
+  res.send({msg:'Test Route'})
+})
 
+//Prod and Dev runs differently for hot reloading.
+//Logic to determine if running build in prod and act accordingly ie: serve static assists from build
+if(process.env.NODE_ENV === 'production' && process.env.frontEnd === 'React'){
+  app.use(express.static('client/build'));
 
-
-// Index Route
-app.get('/', (req, res) => {
-  res.send('invaild endpoint');
-});
-
-app.get('*', (req, res) => {
+  const path = require('path');
+  app.get('*', (req,res)=>{
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}else if(process.env.frontEnd === 'Angular' ){
   res.sendFile(path.join(__dirname, './angular-src/dist/index.html'));
-});
+}
 
-// Port Number
-const port = process.env.PORT || 8080;
+//Your local dev port or for heroku use the env port
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`App listening on ${PORT}`);
+});
 module.exports = app;
