@@ -5,7 +5,8 @@
   "scripts": {
     "build": "cd angular-src && ng build --prod && node fix-sw && cd .. && node bin/www",
     "heroku-postbuild": "cd angular-src && npm i && npm run sw-build-live && cd ..",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "npm i && cd angular-src/ && npm i && ng build && cd .. && npm start"
   },
   "dependencies": {
     "@angular/cli": "^6.0.5",

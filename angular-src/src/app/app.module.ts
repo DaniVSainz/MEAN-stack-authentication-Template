@@ -39,8 +39,6 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 
 //Angular Material Imports
 import {MatToolbarModule,MatSnackBarModule} from '@angular/material';
-//Flex layout is independant of material
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 //Service worker support
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -82,7 +80,6 @@ const appRoutes: Routes =  [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     DialogsModule,
-    FlexLayoutModule,
     FlashMessagesModule.forRoot(),
     //Will remove the above after full replacement.
     SimpleNotificationsModule.forRoot(),
