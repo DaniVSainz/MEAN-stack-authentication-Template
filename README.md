@@ -13,7 +13,7 @@ https://github.com/angular/angular/issues/21636#issuecomment-366205459 Is the th
 How to use.  
 Git clone the repo  
 touch .env and set  
-##### Use one .env file on heroku/production and one different one in dev to save yourself the hassle of constantly changing values
+##### Use one .env file on heroku/production and one in dev to save yourself the hassle of constantly changing values
 Mongo url use mlab or your own local mongo mine was port 27017   
 mongoUrl=mongodb://localhost:27017/auth-template  
 userEmail=XXXXXX@gmail.com    
