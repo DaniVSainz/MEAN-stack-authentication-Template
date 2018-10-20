@@ -1,7 +1,5 @@
 # MEAN-Auth-Template
 This repo will be a template i can clone to use as a foundation for authentication via express/angular for my web-apps  
-This is a MEAN stack authentication template.    
-The app is meant to be cloned and serve as a starting point for any application.    
 
 #### Heroku Deploy instructions at end of document.Takes 1 minute to config.
 
